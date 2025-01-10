@@ -16,21 +16,23 @@
                     <img src="{{ url_for('static', filename='images/Background-dashboard.jpeg') }}" alt="Company Logo" class="company-logo">
                 </div>
             </a>
-                <!-- Theme Toggle Icons -->
-                <button id="themeToggle" class="theme-toggle-btn">
-                    <i class="fa" id="themeIcon"></i>
-                </button>
+            
+            <!-- Theme Toggle Icons -->
+            <button id="themeToggle" class="theme-toggle-btn">
+                <i class="fa" id="themeIcon"></i>
+            </button>
 
+            <!-- Hamburger Menu Button -->
             <button id="menuToggle" class="hamburger-btn" aria-label="Toggle Menu">
                 ☰
             </button>
+            
+            <!-- Navbar Menu -->
             <ul class="navbar-menu" id="navbarMenu">
                 <li><a href="{{ url_for('analytics') }}" class="navbar-item" id="analytics-nav">Analytics</a></li>
                 <li><a href="{{ url_for('training') }}" class="navbar-item" id="training-nav">VR Training</a></li>
                 <li><a href="{{ url_for('monitoring') }}" class="navbar-item" id="monitoring-nav">Monitoring</a></li>
             </ul>
-            
-
         </div>
     </nav>
 
