@@ -1,0 +1,114 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: fixed; /* Fix it to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: background 0.3s ease;
+}
+
+.navbar-item:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Make sure content is not hidden behind navbar */
+body {
+    padding-top: 60px; /* Adjust based on navbar height */
+}
+
+/* Styling the company logo image */
+.company-logo {
+    width: 20%; /* Set image width to 20% of its container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't stretch beyond its container */
+}
+
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #a0f0fc; /* Sky Blue */
+    color: #333;
+}
+
+body.light-mode .navbar {
+    background-color: #80deea; /* Sky Blue for Navbar */
+}
+
+body.light-mode .navbar-item:hover {
+    background-color: #4db6ac; /* Darker Sky Blue on hover */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #0943a1; /* Deep Blue */
+    color: #fff;
+}
+
+body.dark-mode .navbar {
+    background-color: #1a237e; /* Deep Blue for Navbar */
+}
+
+body.dark-mode .navbar-item:hover {
+    background-color: #6200ea; /* Purple on hover */
+}
+
+/* Other Elements for Dark Mode */
+body.dark-mode .dashboard-container {
+    background: rgba(24, 2, 134, 0.9);
+}
+
+body.dark-mode .sensor-data h2 {
+    color: #000000;
+}
+
+body.dark-mode .alert {
+    color: #ff8080;
+}
+
+body.dark-mode .background-vid header h1 {
+    color: #ffcc00; /* Yellow text for contrast in Dark Mode */
+}
+
+/* Styling for Theme Toggle Button */
+.theme-toggle-btn {
+    padding: 10px 20px;
+    background-color: #366df8;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #01ad77;
+}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="background-vid">
+        <video autoplay muted loop id="background-video">
+            <source src="{{ url_for('static', filename='videos/3121459-sd_640_360_24fps.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <header>
+            <h1>Sensor Dashboard</h1>
+        </header>
+    </div>
+
+    <main>
+        <div class="sensor-data">
+            <h2>Sensor Data</h2>
+            <ul>
+                <li id="temperature">Temperature: {{ sensor_data.temperature }} °C</li>
+                <li id="gas-level">Gas Level: {{ sensor_data.gas_level }}</li>
+                <li id="vibration">Vibration: {{ sensor_data.vibration }}</li>
+                <li id="motor-temp">Motor Temperature: {{ sensor_data.motor_temp }} °C</li>
+                <li id="vibration-level">Vibration Level: {{ sensor_data.vibration_level }}</li>
+                <li id="pressure">Pressure: {{ sensor_data.pressure }}</li>
+                <li id="operational-time">Operational Time: {{ sensor_data.operational_time }} hrs</li>
+            </ul>
+            {% if sensor_data.failure_alert %}
+                <p class="alert">Failure Alert: Equipment requires attention!</p>
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}
