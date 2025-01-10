@@ -1,14 +1,17 @@
+/* The provided code snippet is a CSS stylesheet that defines styles for a responsive navbar and theme
+toggling functionality. Here is a breakdown of what each section does: */
 /* Navbar Styles */
 .navbar {
-    background-color: #333;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
     padding: 10px 20px;
-    position: fixed; /* Fix it to the top */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensure it is above other content */
-    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    z-index: 1000; 
+    box-sizing: border-box; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-container {
@@ -23,37 +26,42 @@
 .navbar-logo {
     font-size: 24px;
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
 }
 
 .company-logo {
-    width: 20%; /* Set image width to 20% of its container */
+    width: 20%; 
     height: auto;
     max-width: 100%;
 }
 
 /* Navbar Menu */
 .navbar-menu {
+    background-color: var(--background-color);
+    color: var(--text-color);
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .hamburger-btn {
+    background-color: var(--background-color);
     font-size: 24px;
     background: none;
-    color: white;
+    color: var(--text-color);
     border: none;
     cursor: pointer;
-    display: none; /* Hidden by default */
+    display: none; 
     position: relative;
     z-index: 1100;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-item {
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     padding: 10px 15px;
     transition: background 0.3s ease;
 }
@@ -61,35 +69,41 @@
 .navbar-item:hover {
     background-color: #555;
     border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Body padding to avoid content being hidden under navbar */
 body {
-    padding-top: 60px; /* Adjust based on navbar height */
+    padding-top: 60px; 
 }
 
 /* Light Mode Styles */
 body.light-mode {
-    background-color: #a0f0fc; /* Sky Blue */
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-mode .navbar {
-    background-color: #80deea; /* Sky Blue for Navbar */
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-mode .navbar-item:hover {
-    background-color: #4db6ac;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #0943a1; /* Deep Blue */
-    color: #fff;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .navbar {
-    background-color: #1a237e;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .navbar-item:hover {
@@ -101,7 +115,7 @@ body.dark-mode .navbar-item:hover {
     background: none;
     border: none;
     cursor: pointer;
-    color: white;
+    color: var(--text-color);
     font-size: 24px;
     transition: color 0.3s ease;
 }
@@ -121,23 +135,24 @@ body.dark-mode .navbar-item:hover {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .hamburger-btn {
-        display: block; /* Show hamburger button */
+        display: block; 
     }
     
     .navbar-menu {
-        display: none; /* Hide menu by default */
+        display: none; 
         flex-direction: column;
         align-items: center;
-        background-color: #333;
+        background-color: var(--background-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
         width: 100%;
         position: absolute;
-        top: 60px; /* Adjust based on navbar height */
+        top: 60px;
         left: 0;
         z-index: 999;
     }
 
     .navbar-menu.show {
-        display: flex; /* Show menu when toggled */
+        display: flex; 
     }
 
     .navbar-item {
@@ -147,13 +162,13 @@ body.dark-mode .navbar-item:hover {
     }
 
     .company-logo {
-        width: 15%; /* Adjust logo size on smaller screens */
+        width: 15%;
     }
 }
 
 @media screen and (max-width: 480px) {
     .company-logo {
-        width: 50%; /* Larger logo for very small screens */
+        width: 50%; 
     }
 
     .navbar-container {

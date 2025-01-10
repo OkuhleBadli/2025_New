@@ -1,3 +1,6 @@
+/* This JavaScript code snippet is adding an event listener to the `DOMContentLoaded` event, which
+fires when the initial HTML document has been completely loaded and parsed. Inside this event
+listener function, the code is performing the following tasks: */
 document.addEventListener('DOMContentLoaded', () => {
     const alertElement = document.querySelector('.alert');
     const themeToggleButton = document.getElementById('theme-toggle');
