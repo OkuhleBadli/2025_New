@@ -8,12 +8,17 @@
     left: 0;
     width: 100%;
     z-index: 1000; /* Ensure it is above other content */
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    width: 100%;
+    padding: 0 15px; /* Add some space around the container */
 }
 
 .navbar-logo {
@@ -22,11 +27,27 @@
     color: white;
 }
 
+.company-logo {
+    width: 20%; /* Set image width to 20% of its container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't stretch beyond its container */
+}
+
+/* Navbar Menu */
 .navbar-menu {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
+}
+
+.hamburger-btn {
+    font-size: 24px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none; /* Hidden by default */
 }
 
 .navbar-item {
@@ -41,18 +62,9 @@
     border-radius: 5px;
 }
 
-/* Make sure content is not hidden behind navbar */
 body {
     padding-top: 60px; /* Adjust based on navbar height */
 }
-
-/* Styling the company logo image */
-.company-logo {
-    width: 20%; /* Set image width to 20% of its container */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Ensure it doesn't stretch beyond its container */
-}
-
 
 /* Light Mode Styles */
 body.light-mode {
@@ -82,33 +94,77 @@ body.dark-mode .navbar-item:hover {
     background-color: #6200ea; /* Purple on hover */
 }
 
-/* Other Elements for Dark Mode */
-body.dark-mode .dashboard-container {
-    background: rgba(24, 2, 134, 0.9);
-}
-
-body.dark-mode .sensor-data h2 {
-    color: #000000;
-}
-
-body.dark-mode .alert {
-    color: #ff8080;
-}
-
-body.dark-mode .background-vid header h1 {
-    color: #ffcc00; /* Yellow text for contrast in Dark Mode */
-}
-
-/* Styling for Theme Toggle Button */
+/* Theme Toggle Button */
 .theme-toggle-btn {
-    padding: 10px 20px;
-    background-color: #366df8;
-    color: #333;
+    background: none;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease;
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s ease;
 }
 
 .theme-toggle-btn:hover {
-    background-color: #01ad77;
+    color: #01ad77;
+}
+
+.fa-sun {
+    color: #ffeb3b;
+}
+
+.fa-moon {
+    color: #fff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+    }
+    .navbar-menu {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        align-items: center;
+        background-color: #333;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        z-index: 999;
+    }
+
+    .navbar-menu.show {
+        display: flex; /* Show menu when toggled */
+    }
+
+    .navbar-item {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .company-logo {
+        width: 30%; /* Slightly larger for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .company-logo {
+        width: 50%; /* Larger logo for very small screens */
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-menu {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .navbar-item {
+        width: 100%;
+        text-align: center;
+    }
 }

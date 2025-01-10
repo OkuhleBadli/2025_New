@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Navbar</title>
+    <title>Responsive Navbar</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navbar Component -->
-<!-- Navbar Component -->
-<nav class="navbar">
-    <div class="navbar-container">
-        <a href="/" class="navbar-logo">
-            <div class="logo-container" id="home-nav">
-                <img src="{{ url_for('static', filename='images/Background-dashboard.jpeg') }}" alt="Company Logo" class="company-logo">
-            </div>
-        </a>
-        <button id="theme-toggle" class="theme-toggle-btn">Toggle Dark/Light Mode</button> <!-- Theme Toggle Button -->
-        <ul class="navbar-menu">
-            <li><a href="{{ url_for('analytics') }}" class="navbar-item" id="analytics-nav">Analytics</a></li>
-            <li><a href="{{ url_for('training') }}" class="navbar-item" id="training-nav">Vr Training</a></li>
-            <li><a href="{{ url_for('monitoring') }}" class="navbar-item" id="monitoring-nav">Monitoring</a></li>
-        </ul>
-        
-    </div>
-</nav>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">
+                <div class="logo-container" id="home-nav">
+                    <img src="{{ url_for('static', filename='images/Background-dashboard.jpeg') }}" alt="Company Logo" class="company-logo">
+                </div>
+            </a>
+                <!-- Theme Toggle Icons -->
+                <button id="themeToggle" class="theme-toggle-btn">
+                    <i class="fa" id="themeIcon"></i>
+                </button>
 
-    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+            <button id="menuToggle" class="hamburger-btn" aria-label="Toggle Menu">
+                ☰
+            </button>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="{{ url_for('analytics') }}" class="navbar-item" id="analytics-nav">Analytics</a></li>
+                <li><a href="{{ url_for('training') }}" class="navbar-item" id="training-nav">VR Training</a></li>
+                <li><a href="{{ url_for('monitoring') }}" class="navbar-item" id="monitoring-nav">Monitoring</a></li>
+            </ul>
+            
+
+        </div>
+    </nav>
+
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
 </body>
 </html>

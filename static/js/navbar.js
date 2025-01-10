@@ -1,21 +1,28 @@
-// Example JavaScript (Optional)
-document.querySelectorAll('.navbar-item').forEach(item => {
-    item.addEventListener('click', () => {
-        console.log('Navbar item clicked!');
-    });
-});
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.getElementById('theme-toggle');
+    const menuToggle = document.getElementById('menuToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    // Hamburger menu toggle
+    menuToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('show');
+    });
+
+    // Theme toggle functionality
+    const themeToggleButton = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
     const body = document.body;
 
-    // Function to set colors for light and dark mode
     const setThemeColors = (theme) => {
         if (theme === 'dark') {
             body.classList.add('dark-mode');
             body.classList.remove('light-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
         } else {
             body.classList.add('light-mode');
             body.classList.remove('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
     };
 
@@ -24,8 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         setThemeColors(savedTheme);
     } else {
-        // Default theme if no preference is saved
-        setThemeColors('light');
+        setThemeColors('light'); // Default theme
     }
 
     // Toggle theme on button click
