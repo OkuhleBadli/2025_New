@@ -4,6 +4,7 @@
     --primary-color: #6200ea;
     --secondary-color: #3700b3;
     --alert-color: #d32f2f;
+    --header-color: rgb(0, 93, 186);
 }
 
 .dark-theme {
@@ -12,6 +13,7 @@
     --primary-color: #bb86fc;
     --secondary-color: #3700b3;
     --alert-color: #cf6679;
+    --header-color: rgb(255, 249, 249);
 }
 
 body {

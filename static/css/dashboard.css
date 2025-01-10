@@ -32,7 +32,7 @@
 
 /* Styling for the header text */
 .background-vid header h1 {
-    color: #ffffff; /* White text for better contrast */
+    color: var(--header-color);
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for readability */
     z-index: 2;
     position: relative;
