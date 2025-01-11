@@ -1,8 +1,8 @@
 /*styles*/
 
 .main-container {
-    margin-top: calc(3px + 0.5rem); /* Adjust as needed */
-    padding: 1rem; /* Optional for better spacing */
+    margin-top: calc(5% + 0.5rem); /* Adjust as needed */
+    padding: 5%; /* Optional for better spacing */
 }
 
 /* Ensure the header text is readable over the video */
