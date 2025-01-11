@@ -2,9 +2,6 @@
 fires when the initial HTML document has been completely loaded and parsed. Inside this event
 listener function, the code is performing the following tasks: */
 document.addEventListener('DOMContentLoaded', () => {
-    const alertElement = document.querySelector('.alert');
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
 
     // IDs of the data elements
     const elements = {

@@ -5,6 +5,22 @@
     --secondary-color: #3700b3;
     --alert-color: #ef0606;
     --header-color: rgb(0, 93, 186);
+
+    /* Chart colors */
+    --temperature-border-color: rgb(115, 4, 28);
+    --temperature-bg-color: rgba(215, 9, 53, 0.2);
+
+    --gas-border-color: rgb(4, 86, 142);
+    --gas-bg-color: rgba(23, 106, 162, 0.2);
+
+    --vibration-border-color: rgb(2, 162, 162);
+    --vibration-bg-color: rgba(6, 176, 176, 0.2);
+
+    --motor-temp-border-color: rgb(194, 140, 3);
+    --motor-temp-bg-color: rgba(238, 173, 8, 0.2);
+
+    --pressure-border-color: rgb(67, 1, 76);
+    --pressure-bg-color: rgba(91, 10, 255, 0.2);
 }
 
 .dark-theme {
@@ -14,7 +30,24 @@
     --secondary-color: #3700b3;
     --alert-color: #ec7a8f;
     --header-color: rgb(255, 249, 249);
+
+    /* Chart colors for dark theme */
+    --temperature-border-color: rgb(250, 191, 170);
+    --temperature-bg-color: rgba(255, 69, 0, 0.2);
+
+    --gas-border-color: rgb(168, 204, 239);
+    --gas-bg-color: rgba(96, 172, 248, 0.2);
+
+    --vibration-border-color: rgb(153, 233, 153);
+    --vibration-bg-color: rgba(102, 171, 102, 0.2);
+
+    --motor-temp-border-color: rgb(252, 171, 72);
+    --motor-temp-bg-color: rgba(252, 179, 91, 0.2);
+
+    --pressure-border-color: rgb(179, 228, 54);
+    --pressure-bg-color: rgba(170, 99, 187, 0.2);
 }
+
 
 body {
     background-color: var(--background-color);
