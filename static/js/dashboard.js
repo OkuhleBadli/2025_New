@@ -50,4 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(fetchAndUpdateSensorData, 5000); // Every 5 seconds
 
 
+    async function fetchGatewayIp() {
+        const response = await fetch('/api/gateway-ip');
+        const data = await response.json();
+        console.log('Gateway IP:', data);
+        document.getElementById('wifi-ip').textContent = data.gatewayIp;
+    }
+
+    // Fetch the gateway IP address when the page loads
+    fetchGatewayIp();
+
 });
