@@ -50,14 +50,29 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(fetchAndUpdateSensorData, 5000); // Every 5 seconds
 
 
-    async function fetchGatewayIp() {
-        const response = await fetch('/api/gateway-ip');
-        const data = await response.json();
-        console.log('Gateway IP:', data);
-        document.getElementById('wifi-ip').textContent = data.gatewayIp;
-    }
+    const fetchNetworkInterfaces = async () => {
+        try {
+            const response = await fetch('/api/gateway-ip');
+            const interfaces = await response.json();
+    
+            if (Array.isArray(interfaces)) {
+                const list = document.getElementById('network-interfaces');
+                list.innerHTML = interfaces
+                    .map(
+                        (iface) =>
+                            `<li>Iterface: ${iface.interface} - Adress:${iface.address} FAMILY :(${iface.family})</li>`
+                    )
+                    .join('');
+            } else {
+                console.error('Unexpected response format:', interfaces);
+            }
+        } catch (error) {
+            console.error('Error fetching network interfaces:', error);
+        }
+    };
+    
 
     // Fetch the gateway IP address when the page loads
-    fetchGatewayIp();
+    fetchNetworkInterfaces();
 
 });

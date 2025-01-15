@@ -5,35 +5,22 @@ import socket
 
 app = Flask(__name__, template_folder='templates')
 
-
-def test_gateway_ip():
+def fetch_network_interfaces():
     try:
-        gateways = psutil.net_if_addrs()
-        for interface, addrs in gateways.items():
+        interfaces = psutil.net_if_addrs()
+        result = []
+        for interface_name, addrs in interfaces.items():
             for addr in addrs:
-                if addr.family == psutil.AF_INET4:  # Only check IPv4 addresses
-                    print(f"Interface: {interface}, IP Address: {addr.address}")
+                if addr.family in (socket.AF_INET, socket.AF_INET6):  # Corrected from psutil.AF_INET
+                    address_family = "IPv4" if addr.family == socket.AF_INET else "IPv6"
+                    result.append({
+                        "interface": interface_name,
+                        "address": addr.address,
+                        "family": address_family,
+                    })
+        return result
     except Exception as e:
-        print("Error fetching network interfaces:", e)
-
-test_gateway_ip()
-
-
-# Function to get the default gateway (router IP address)
-def get_gateway_ip():
-    try:
-        # Get network interface addresses
-        gateways = psutil.net_if_addrs()
-        for interface, addrs in gateways.items():
-            for addr in addrs:
-                # Check for IPv4 address using socket.AF_INET
-                if addr.family == socket.AF_INET:
-                    print(f"Interface: {interface}, IP Address: {addr.address}")
-                    return addr.address  # Return the first found IPv4 address
-    except Exception as e:
-        print("Error fetching network interfaces:", e)
-        return 'Could not retrieve gateway IP'
-
+        return {"error": f"Error fetching network interfaces: {e}"}
 
 # Route for the main dashboard
 @app.route('/')
@@ -101,9 +88,9 @@ def sensor_data():
 @app.route('/api/gateway-ip')
 def gateway_ip():
     try:
-        gateway_ip = get_gateway_ip()
-        print('Gateway IP Obtained:', gateway_ip)
-        return jsonify({'gatewayIp': gateway_ip})
+        interfaces = fetch_network_interfaces()
+        print('Gateway IP Obtained:', interfaces)
+        return jsonify(interfaces)
     except Exception as e:
         print("Error fetching gateway IP:", e)
         return jsonify({'error': 'Could not retrieve gateway IP'}), 500
