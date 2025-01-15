@@ -89,12 +89,53 @@ def sensor_data():
 def gateway_ip():
     try:
         interfaces = fetch_network_interfaces()
-        print('Gateway IP Obtained:', interfaces)
+        # print('Gateway IP Obtained:', interfaces)
         return jsonify(interfaces)
     except Exception as e:
         print("Error fetching gateway IP:", e)
         return jsonify({'error': 'Could not retrieve gateway IP'}), 500
 
+
+def is_wifi_interface(interface_name):
+    """Check if the interface is likely a WiFi interface."""
+    wifi_identifiers = ['wlan', 'wifi']
+    return any(identifier in interface_name.lower() for identifier in wifi_identifiers)
+
+
+def fetch_data_from_endpoint(endpoint_url):
+    """Fetch data from a specified endpoint."""
+    try:
+        response = requests.get(endpoint_url)
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException as e:
+        return {"error": f"Error fetching data from endpoint: {e}"}
+
+@app.route('/api/device_data')
+def device_data():
+    try:
+        interfaces = fetch_network_interfaces()
+        wifi_interfaces = [
+            iface for iface in interfaces if is_wifi_interface(iface['interface'])
+        ]
+        
+        data = []
+        for wifi_interface in wifi_interfaces:
+            endpoint_url = f"http://{wifi_interface['address']}"
+            fetched_data = fetch_data_from_endpoint(endpoint_url)
+            
+            # Display the fetched data in the console
+            print(f"Data fetched from {wifi_interface['address']}:")
+            print(fetched_data)
+            
+            data.append({
+                "interface": wifi_interface['interface'],
+                "address": wifi_interface['address'],
+                "fetched_data": fetched_data
+            })
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": f"Error processing device data: {e}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

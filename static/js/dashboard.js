@@ -46,8 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Periodically update data
-    setInterval(fetchAndUpdateSensorData, 5000); // Every 5 seconds
 
 
     const fetchNetworkInterfaces = async () => {
@@ -74,5 +72,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch the gateway IP address when the page loads
     fetchNetworkInterfaces();
+
+
+    const fetchDeviceData = async () => {
+    try {
+        const response = await fetch('/api/device_data');
+        
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("DATA OBTAINED FROM DEVICES:", data);
+    } catch (error) {
+        console.error("Failed to fetch device data:", error);
+    }
+};
+
+fetchDeviceData();
+    // Periodically update data
+    setInterval([fetchAndUpdateSensorData,
+        fetchDeviceData
+    ], 5000); // Every 5 seconds
+
 
 });
