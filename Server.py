@@ -1,4 +1,5 @@
-import random
+ 
+ import random
 from flask import Flask, render_template, jsonify
 
 app = Flask(__name__, template_folder='templates')
@@ -27,7 +28,7 @@ def dashboard():
         data['pressure'] > 25,
         data['operational_time'] > 400
     ])
-
+                                    
     return render_template('dashboard.html', sensor_data=data)
 
 # Route for the analytics page
